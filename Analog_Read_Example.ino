@@ -9,8 +9,8 @@ void setup() {
   Serial.begin(9600);
 
   // set the digital pin as output:
-  pinMode(5, OUTPUT);
-  pinMode(6, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+
   
 }
 
@@ -24,11 +24,10 @@ void loop() {
   Serial.println(sensorValue);
 
   //map sensor value to a value between 0 and 255.
-  int brightness = map(sensorValue, 0,1023,255,0);
+  int brightness = map(sensorValue, 0,1023,0,255);
 
   //outputing brightness with PWM, must be a value between 0 and 255.
-  analogWrite(6,0);
-  analogWrite(5,0);
+  analogWrite(ledPin,brightness);
   delay(10);        // delay in between reads for stability
   
 }
